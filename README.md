@@ -30,7 +30,7 @@ This project aims to develop a management system using Java with a Swing-based G
 1. Clone the repository:
 
    ```bash
-   git clone <repository_url>
+   git clone <https://github.com/2611saurabh/Banking-Management-System>
    ```
 
 2. Ensure you have Java and the necessary IDE (e.g., IntelliJ IDEA, Eclipse) installed.
