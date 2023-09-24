@@ -8,12 +8,18 @@ import com.toedter.calendar.JDateChooser;
 
 public class SignupOne extends JFrame {
 
+    long random;
+    JTextField nameTextField, fatherTextField, emailTextField, addressTextField,
+            cityTextField, staTextField, pincodeTextField;
+    JButton next;
+    JRadioButton male, female, other;
+
     public SignupOne() {
 
         setLayout(null);
 
         Random ran = new Random();
-        long random = Math.abs((ran.nextLong() % 9000L) + 1000);
+        random = Math.abs((ran.nextLong() % 9000L) + 1000);
 
         // Application Number Showing at top
         JLabel formo = new JLabel("Application Form Number :" + random);
@@ -34,7 +40,7 @@ public class SignupOne extends JFrame {
         add(name);
 
         // adding textfield
-        JTextField nameTextField = new JTextField();
+        nameTextField = new JTextField();
         nameTextField.setFont(new Font("Arial", Font.BOLD, 14));
         nameTextField.setBounds(300, 140, 400, 30);
         add(nameTextField);
@@ -46,7 +52,7 @@ public class SignupOne extends JFrame {
         add(fathersName);
 
         // father name textfield
-        JTextField fatherTextField = new JTextField();
+        fatherTextField = new JTextField();
         fatherTextField.setFont(new Font("Arial", Font.BOLD, 14));
         fatherTextField.setBounds(300, 190, 400, 30);
         add(fatherTextField);
@@ -69,11 +75,11 @@ public class SignupOne extends JFrame {
         add(gender);
 
         // gender radio button
-        JRadioButton male = new JRadioButton("Male");
+        male = new JRadioButton("Male");
         male.setBounds(300, 290, 60, 30);
         add(male);
 
-        JRadioButton female = new JRadioButton("Female");
+        female = new JRadioButton("Female");
         female.setBounds(450, 290, 90, 30);
         add(female);
 
@@ -90,7 +96,7 @@ public class SignupOne extends JFrame {
         add(email);
 
         // eamil textfield
-        JTextField emailTextField = new JTextField();
+        emailTextField = new JTextField();
         emailTextField.setFont(new Font("Arial", Font.BOLD, 14));
         emailTextField.setBounds(300, 340, 400, 30);
         add(emailTextField);
@@ -128,7 +134,7 @@ public class SignupOne extends JFrame {
         add(address);
 
         // address textfield
-        JTextField addressTextField = new JTextField();
+        addressTextField = new JTextField();
         addressTextField.setFont(new Font("Arial", Font.BOLD, 14));
         addressTextField.setBounds(300, 440, 400, 30);
         add(addressTextField);
@@ -140,7 +146,7 @@ public class SignupOne extends JFrame {
         add(city);
 
         // city texxt field
-        JTextField cityTextField = new JTextField();
+        cityTextField = new JTextField();
         cityTextField.setFont(new Font("Arial", Font.BOLD, 14));
         cityTextField.setBounds(300, 490, 400, 30);
         add(cityTextField);
@@ -152,7 +158,7 @@ public class SignupOne extends JFrame {
         add(state);
 
         // state text field
-        JTextField staTextField = new JTextField();
+        staTextField = new JTextField();
         staTextField.setFont(new Font("Arial", Font.BOLD, 14));
         staTextField.setBounds(300, 540, 400, 30);
         add(staTextField);
@@ -164,14 +170,14 @@ public class SignupOne extends JFrame {
         add(pincode);
 
         // pincode textfield
-        JTextField pincodeTextField = new JTextField();
+        pincodeTextField = new JTextField();
         pincodeTextField.setFont(new Font("Arial", Font.BOLD, 14));
         pincodeTextField.setBounds(300, 590, 400, 30);
         add(pincodeTextField);
 
         // Buttons
 
-        JButton next = new JButton("Next");
+        next = new JButton("Next");
         next.setBackground(Color.BLACK);
         next.setForeground(Color.white);
         next.setBounds(620, 660, 80, 30);
@@ -189,6 +195,7 @@ public class SignupOne extends JFrame {
     public static void main(String[] args) {
 
         new SignupOne();
+
     }
 
 }
