@@ -1,24 +1,26 @@
 package bank;
 
-import java.awt.Color;
 import java.awt.*;
 import java.util.*;
+
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.JFrame.*;
-
-import com.toedter.calendar.JDateChooser;
+import javax.swing.text.JTextComponent.*;
 
 public class SignupTwo extends JFrame implements ActionListener {
 
     long random;
-    JTextField religionTextField, fatherTextField, emailTextField, addressTextField,
-            cityTextField, staTextField, pincodeTextField;
+    JLabel religion, category, seniorCitizen, income, education, qualification, occupation, pan, aadhar,
+            exisitingAccount;
+    JTextField aadharTextField, panTextField;
+    JComboBox religiondrop, categoryDropBox, incomeBox, qualificationBox, occupationalBox;
     JButton next;
-    JRadioButton male, female, married, notMarried;
-    JDateChooser dateChooser;
+    JRadioButton syes, sno, eyes, eno;
+    String formno;
 
-    SignupTwo() {
+    SignupTwo(String formno) {
+        this.formno = formno;
 
         setLayout(null);
 
@@ -38,162 +40,155 @@ public class SignupTwo extends JFrame implements ActionListener {
         add(additionalDetail);
 
         // name of person
-        JLabel religion = new JLabel("Religion :");
+        religion = new JLabel("Religion :");
         religion.setFont(new Font("Arial", Font.BOLD, 20));
         religion.setBounds(100, 140, 100, 30);
         add(religion);
 
         String[] religion_arr = { "Hindu", "Muslim", "Sikh", "Chritsian", "Other" };
-        JComboBox religiondrop = new JComboBox<>(religion_arr);
+        religiondrop = new JComboBox<>(religion_arr);
         religiondrop.setBounds(300, 140, 400, 30);
         religiondrop.setBackground(Color.WHITE);
         add(religiondrop);
 
-        // fathers name
+        // Category name
 
-        JLabel fathersName = new JLabel("Category :");
-        fathersName.setFont(new Font("Arial", Font.BOLD, 20));
-        fathersName.setBounds(100, 190, 200, 30);
-        add(fathersName);
+        category = new JLabel("Category :");
+        category.setFont(new Font("Arial", Font.BOLD, 20));
+        category.setBounds(100, 190, 200, 30);
+        add(category);
 
         // combo for category
         String valcategory[] = { "General", "OBC", "Gen-EWS", "ST", "SC", "PWD" };
-        JComboBox categoryDropBox = new JComboBox<>(valcategory);
+        categoryDropBox = new JComboBox<>(valcategory);
         categoryDropBox.setBounds(300, 190, 400, 30);
         categoryDropBox.setBackground(Color.white);
         add(categoryDropBox);
 
-        // date of birth
-        JLabel dob = new JLabel("Income :");
-        dob.setFont(new Font("Arial", Font.BOLD, 20));
-        dob.setBounds(100, 240, 200, 30);
-        add(dob);
+        // income
+        income = new JLabel("Income :");
+        income.setFont(new Font("Arial", Font.BOLD, 20));
+        income.setBounds(100, 240, 200, 30);
+        add(income);
 
-        // date calendar
-        dateChooser = new JDateChooser();
-        dateChooser.setBounds(300, 240, 200, 30);
-        add(dateChooser);
+        // icme comboBox
+        String valIncome[] = { "NULL", "< 1,50,000", "< 2,50,000", "< 5,00,0000", "upto 1000000" };
+        incomeBox = new JComboBox<>(valIncome);
+        incomeBox.setBounds(300, 240, 400, 30);
+        incomeBox.setBackground(Color.white);
+        add(incomeBox);
 
-        // gender
-        JLabel gender = new JLabel("Educational :");
-        gender.setFont(new Font("Arial", Font.BOLD, 20));
-        gender.setBounds(100, 290, 200, 30);
-        add(gender);
+        // education
+        education = new JLabel("Educational :");
+        education.setFont(new Font("Arial", Font.BOLD, 20));
+        education.setBounds(100, 290, 200, 30);
+        add(education);
 
-        // gender radio button
-        male = new JRadioButton("Male");
-        male.setBounds(300, 290, 60, 30);
-        add(male);
+        // qualification
+        qualification = new JLabel("Qualification :");
+        qualification.setFont(new Font("Arial", Font.BOLD, 20));
+        qualification.setBounds(100, 315, 200, 30);
+        add(qualification);
 
-        female = new JRadioButton("Female");
-        female.setBounds(450, 290, 90, 30);
-        add(female);
+        String valQualification[] = { "Non-Graduate", "Graduation", "Post-Graduation", "Doctrate", "Other" };
+        qualificationBox = new JComboBox<>(valQualification);
+        qualificationBox.setBounds(300, 315, 400, 30);
+        qualificationBox.setBackground(Color.white);
+        add(qualificationBox);
 
-        // grouping the female and male here
+        // Occupation
+        occupation = new JLabel("Occupation :");
+        occupation.setFont(new Font("Arial", Font.BOLD, 20));
+        occupation.setBounds(100, 390, 200, 30);
+        add(occupation);
 
-        ButtonGroup gendGroup = new ButtonGroup();
-        gendGroup.add(male);
-        gendGroup.add(female);
+        // Ocupation choose field
+        String valOccupational[] = { "Salaried", "Self-Employed", "Bussiness", "Student", "Retired", "Others" };
+        occupationalBox = new JComboBox<>(valOccupational);
+        occupationalBox.setBounds(300, 390, 400, 30);
+        occupationalBox.setBackground(Color.white);
+        add(occupationalBox);
 
-        // email
-        JLabel email = new JLabel("Qualification :");
-        email.setFont(new Font("Arial", Font.BOLD, 20));
-        email.setBounds(100, 340, 200, 30);
-        add(email);
+        // pan
+        pan = new JLabel("Pan :");
+        pan.setFont(new Font("Arial", Font.BOLD, 20));
+        pan.setBounds(100, 440, 200, 30);
+        add(pan);
 
-        // eamil textfield
-        emailTextField = new JTextField();
-        emailTextField.setFont(new Font("Arial", Font.BOLD, 14));
-        emailTextField.setBounds(300, 340, 400, 30);
-        add(emailTextField);
+        // pan textfield
+        panTextField = new JTextField();
+        panTextField.setFont(new Font("Arial", Font.BOLD, 14));
+        panTextField.setBounds(300, 440, 400, 30);
+        add(panTextField);
 
-        // Martail status
-        JLabel martial = new JLabel("Occupation :");
-        martial.setFont(new Font("Arial", Font.BOLD, 20));
-        martial.setBounds(100, 390, 200, 30);
-        add(martial);
+        // aadhar
+        aadhar = new JLabel("Aadhar Number:");
+        aadhar.setFont(new Font("Arial", Font.BOLD, 20));
+        aadhar.setBounds(100, 490, 200, 30);
+        add(aadhar);
 
-        // radio button for martial status
-        married = new JRadioButton("Yes");
-        married.setBounds(300, 390, 60, 30);
-        add(married);
+        // aadhar texxt field
+        aadharTextField = new JTextField();
+        aadharTextField.setFont(new Font("Arial", Font.BOLD, 14));
+        aadharTextField.setBounds(300, 490, 400, 30);
+        add(aadharTextField);
 
-        notMarried = new JRadioButton("No");
-        notMarried.setBounds(450, 390, 90, 30);
-        add(notMarried);
+        // senior Setizion
+        seniorCitizen = new JLabel("Senior Citizen :");
+        seniorCitizen.setFont(new Font("Arial", Font.BOLD, 20));
+        seniorCitizen.setBounds(100, 540, 200, 30);
+        add(seniorCitizen);
 
-        JRadioButton other = new JRadioButton("Other");
-        other.setBounds(630, 390, 90, 30);
-        add(other);
+        // Senior Citizen radio button
 
-        // button grouping
+        syes = new JRadioButton("Yes");
+        syes.setBounds(300, 540, 100, 30);
+        syes.setBackground(Color.white);
+        add(syes);
 
-        ButtonGroup martialGroup = new ButtonGroup();
-        martialGroup.add(married);
-        martialGroup.add(notMarried);
-        martialGroup.add(other);
+        sno = new JRadioButton("No");
+        sno.setBounds(450, 540, 100, 30);
+        sno.setBackground(Color.white);
+        add(sno);
 
-        // address
-        JLabel address = new JLabel("Pan :");
-        address.setFont(new Font("Arial", Font.BOLD, 20));
-        address.setBounds(100, 440, 200, 30);
-        add(address);
+        ButtonGroup seniorGroup = new ButtonGroup();
+        seniorGroup.add(syes);
+        seniorGroup.add(sno);
 
-        // address textfield
-        addressTextField = new JTextField();
-        addressTextField.setFont(new Font("Arial", Font.BOLD, 14));
-        addressTextField.setBounds(300, 440, 400, 30);
-        add(addressTextField);
+        // existing
+        exisitingAccount = new JLabel("Exisiting Account :");
+        exisitingAccount.setFont(new Font("Arial", Font.BOLD, 20));
+        exisitingAccount.setBounds(100, 590, 200, 30);
+        add(exisitingAccount);
 
-        // city
-        JLabel city = new JLabel("Aadhar Number:");
-        city.setFont(new Font("Arial", Font.BOLD, 20));
-        city.setBounds(100, 490, 200, 30);
-        add(city);
+        // Exisiting radio button
+        eyes = new JRadioButton("Yes");
+        eyes.setBounds(300, 590, 100, 30);
+        eyes.setBackground(Color.white);
+        add(eyes);
 
-        // city texxt field
-        cityTextField = new JTextField();
-        cityTextField.setFont(new Font("Arial", Font.BOLD, 14));
-        cityTextField.setBounds(300, 490, 400, 30);
-        add(cityTextField);
+        eno = new JRadioButton("No");
+        eno.setBounds(450, 590, 100, 30);
+        eno.setBackground(Color.white);
+        add(eno);
 
-        // state
-        JLabel state = new JLabel("Senior Citizen :");
-        state.setFont(new Font("Arial", Font.BOLD, 20));
-        state.setBounds(100, 540, 200, 30);
-        add(state);
-
-        // state text field
-        staTextField = new JTextField();
-        staTextField.setFont(new Font("Arial", Font.BOLD, 14));
-        staTextField.setBounds(300, 540, 400, 30);
-        add(staTextField);
-
-        // pincode
-        JLabel pincode = new JLabel("Exisiting Account :");
-        pincode.setFont(new Font("Arial", Font.BOLD, 20));
-        pincode.setBounds(100, 590, 200, 30);
-        add(pincode);
-
-        // pincode textfield
-        pincodeTextField = new JTextField();
-        pincodeTextField.setFont(new Font("Arial", Font.BOLD, 14));
-        pincodeTextField.setBounds(300, 590, 400, 30);
-        add(pincodeTextField);
+        ButtonGroup exisitngGroup = new ButtonGroup();
+        exisitngGroup.add(eyes);
+        exisitngGroup.add(eno);
 
         // Buttons
 
         next = new JButton("Next");
         next.setBackground(Color.BLACK);
         next.setForeground(Color.white);
-        next.setBounds(620, 660, 80, 30);
+        next.setBounds(620, 760, 80, 30);
         next.setFont(new Font("Arial", Font.BOLD, 14));
         next.addActionListener(this);
         add(next);
 
         getContentPane().setBackground(Color.WHITE);
         setTitle("NEW ACCOUNT APPLICATION FORM PAGE - 2");
-        setSize(850, 800);
+        setSize(900, 1000);
         setLocation(350, 10);
         setVisible(true);
 
@@ -202,42 +197,47 @@ public class SignupTwo extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
 
         String formo = "" + random; // long
-        String name = religionTextField.getText(); //
-        String fname = fatherTextField.getText();
-        String dob = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
-        String gender = null;
-        if (male.isSelected()) {
-            gender = "Male";
-        } else {
-            gender = "Female";
+        String sreligion = (String) religiondrop.getSelectedItem();
+        String scatagory = (String) categoryDropBox.getSelectedItem();
+        String sincome = (String) incomeBox.getSelectedItem();
+        String seducation = (String) qualificationBox.getSelectedItem();
+        String soccupation = (String) occupationalBox.getSelectedItem();
+        String eseinorcitizen = null;
+        if (syes.isSelected()) {
+            eseinorcitizen = "Yes";
+
+        } else if (sno.isSelected()) {
+            eseinorcitizen = "No";
         }
 
-        String email = emailTextField.getText();
-        String marital = null;
-        if (married.isSelected()) {
-            marital = "Married";
+        String exisitingaccount = null;
+        if (eyes.isSelected()) {
+            exisitingaccount = "Yes";
         } else {
-            marital = "Not Married";
+            exisitingaccount = "No";
         }
 
-        String address = addressTextField.getText();
-        String city = cityTextField.getText();
-        String state = staTextField.getText();
-        String pin = pincodeTextField.getText();
+        String span = panTextField.getText();
+        String saadhar = aadharTextField.getText();
 
         try {
-            if (name.equals("")) {
-                JOptionPane.showMessageDialog(null, "Name is Required");
-            } else {
-                Conn c = new Conn();
-                String query = "insert into signup values('" + formo + "','" + name + "','" + fname + "','" + dob
-                        + "','" + gender + "','" + email + "','" + marital + "','" + address + "','" + city + "','"
-                        + pin + "','" + state
-                        + "')";
 
-                c.s.executeUpdate(query);
+            Conn c = new Conn();
+            //
+            // create table signuptwo(formno varchar(20), religion varchar(20),
+            // category varchar(20), income varchar(20), education varchar(20), occupation
+            // varchar(20),
+            // pan varchar(20), aadhar varchar(20), seniorcitizen varchar(20),
+            // existingaccount varchar(20));
 
-            }
+            String query = "insert into signuptwo values('" + formo + "','" + sreligion + "','" + scatagory + "','"
+                    + sincome
+                    + "','" + seducation + "','" + soccupation + "','" + span + "','" + saadhar
+                    + "','" + span + "','"
+                    + eseinorcitizen + "','" + exisitingaccount + "')";
+
+            c.s.executeUpdate(query);
+            // signup3 object
 
         } catch (Exception e) {
             System.out.println(e);
@@ -247,7 +247,7 @@ public class SignupTwo extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
 
-        new SignupTwo();
+        new SignupTwo("");
 
     }
 
